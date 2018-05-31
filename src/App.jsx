@@ -55,8 +55,14 @@ class App extends Component {
 						<Glyphicon id="search-button" glyph="search" />
 					</InputGroup.Addon>
 				</FormGroup>
-				<Profile artist={this.state.artist} />
-				<section id="gallery">Gallery</section>
+				{this.state.artist ? (
+					<div>
+						<Profile artist={this.state.artist} />
+						<section id="gallery">Gallery</section>
+					</div>
+				) : (
+					<div />
+				)}
 			</div>
 		);
 	}
