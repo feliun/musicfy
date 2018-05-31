@@ -34,6 +34,13 @@ class Gallery extends Component {
 		});
 	}
 
+	renderTrackSymbol(track) {
+		const pause = <span>| |</span>;
+		const play = <span>&#9655;</span>;
+		if (!this.state.playing) return play;
+		return this.state.playingUrl === track.preview_url ? pause : play;
+	}
+
 	render() {
 		const { tracks } = this.props;
 		return (
@@ -42,7 +49,10 @@ class Gallery extends Component {
 					const trackImg = track.album.images[0].url;
 					return (
 						<div key={i} className="track">
-							<img src={trackImg} alt="track" className="track-img" onClick={() => this.playAudio(track.preview_url)} />
+							<img src={trackImg} alt="track" className="track-img" />
+							<div className="track-play" onClick={() => this.playAudio(track.preview_url)}>
+								<div className="track-play-inner">{this.renderTrackSymbol(track)}</div>
+							</div>
 							<p className="track-text">{track.name}</p>
 						</div>
 					);
