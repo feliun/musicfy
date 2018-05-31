@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import { FormGroup, FormControl, InputGroup, Glyphicon } from "react-bootstrap";
+
 import Profile from "./Profile";
+import Gallery from "./Gallery";
+
 import BeatlesData from "./fixtures/beatles.json";
 import TracksData from "./fixtures/tracks.json";
 
@@ -77,7 +80,7 @@ class App extends Component {
 				{this.state.artist ? (
 					<div>
 						<Profile artist={this.state.artist} />
-						<section id="gallery">Gallery</section>
+						<Gallery tracks={this.state.tracks} />
 					</div>
 				) : (
 					<div />
